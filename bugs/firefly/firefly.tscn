@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://light.png" type="Texture" id=1]
+[ext_resource path="res://bugs/firefly/firefly_glow.gd" type="Script" id=2]
+[ext_resource path="res://bugs/firefly/firefly.gd" type="Script" id=3]
+[ext_resource path="res://bugs/firefly/firefly.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 3.0
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("bug:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("collider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "bug"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("bug:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("collider:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 1 ), Vector2( 0, 0 ) ]
+}
+
+[node name="firefly" type="Area2D" groups=["daytime"]]
+collision_mask = 2
+script = ExtResource( 3 )
+timeToNewTarget = 0.5
+moveSpeed = 8.0
+dayTimeWiggleRange = 6.28
+
+[node name="glow" type="Light2D" parent="." groups=["daytime"]]
+position = Vector2( 0, 1 )
+texture = ExtResource( 1 )
+texture_scale = 0.1
+energy = 0.0
+script = ExtResource( 2 )
+glow_rate = 1.5
+min_glow_wait = 1.5
+
+[node name="bug" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+hframes = 3
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="animator" type="AnimationPlayer" parent="."]
+autoplay = "bug"
+anims/RESET = SubResource( 2 )
+anims/bug = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_firefly_body_entered"]

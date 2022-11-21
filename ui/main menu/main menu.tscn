@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/main menu/BaseSprites.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/transitions/transition_whoosh.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/GGG.tres" type="DynamicFont" id=8]
+[ext_resource path="res://ui/main menu/main_menu.gd" type="Script" id=9]
+[ext_resource path="res://ui/main menu/hover_focus.gd" type="Script" id=11]
+
+[node name="main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_neighbour_bottom = NodePath("PrimaryButtons/play")
+focus_mode = 2
+script = ExtResource( 9 )
+
+[node name="transition" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="BaseSprites" parent="." instance=ExtResource( 1 )]
+z_index = -3
+
+[node name="PrimaryButtons" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="play" type="Button" parent="PrimaryButtons"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 109.0
+margin_top = 126.0
+margin_right = 146.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 8 )
+script = ExtResource( 11 )
+
+[node name="options" type="Button" parent="PrimaryButtons"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 97.0
+margin_top = 144.0
+margin_right = 160.0
+margin_bottom = 162.0
+custom_fonts/font = ExtResource( 8 )
+script = ExtResource( 11 )
+
+[node name="credits" type="Button" parent="PrimaryButtons"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 100.0
+margin_top = 162.0
+margin_right = 157.0
+margin_bottom = 180.0
+custom_fonts/font = ExtResource( 8 )
+script = ExtResource( 11 )
+
+[node name="help" type="Button" parent="PrimaryButtons"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 13.0
+margin_top = 171.0
+margin_right = 49.0
+margin_bottom = 189.0
+custom_fonts/font = ExtResource( 8 )
+script = ExtResource( 11 )
+
+[node name="quit" type="Button" parent="PrimaryButtons"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 208.0
+margin_top = 171.0
+margin_right = 244.0
+margin_bottom = 189.0
+custom_fonts/font = ExtResource( 8 )
+script = ExtResource( 11 )
+
+[connection signal="animation_finished" from="transition/animator" to="." method="_start_game"]
+[connection signal="focus_entered" from="PrimaryButtons/play" to="." method="_board_button_focus" binds= [ 0 ]]
+[connection signal="focus_exited" from="PrimaryButtons/play" to="." method="_board_button_unfocus" binds= [ 0 ]]
+[connection signal="mouse_entered" from="PrimaryButtons/play" to="PrimaryButtons/play" method="_hover"]
+[connection signal="mouse_exited" from="PrimaryButtons/play" to="PrimaryButtons/play" method="_unhover"]
+[connection signal="pressed" from="PrimaryButtons/play" to="." method="_play"]
+[connection signal="focus_entered" from="PrimaryButtons/options" to="." method="_board_button_focus" binds= [ 1 ]]
+[connection signal="focus_exited" from="PrimaryButtons/options" to="." method="_board_button_unfocus" binds= [ 1 ]]
+[connection signal="mouse_entered" from="PrimaryButtons/options" to="PrimaryButtons/options" method="_hover"]
+[connection signal="mouse_exited" from="PrimaryButtons/options" to="PrimaryButtons/options" method="_unhover"]
+[connection signal="pressed" from="PrimaryButtons/options" to="." method="_options"]
+[connection signal="focus_entered" from="PrimaryButtons/credits" to="." method="_board_button_focus" binds= [ 2 ]]
+[connection signal="focus_exited" from="PrimaryButtons/credits" to="." method="_board_button_unfocus" binds= [ 2 ]]
+[connection signal="mouse_entered" from="PrimaryButtons/credits" to="PrimaryButtons/credits" method="_hover"]
+[connection signal="mouse_exited" from="PrimaryButtons/credits" to="PrimaryButtons/credits" method="_unhover"]
+[connection signal="pressed" from="PrimaryButtons/credits" to="." method="_credits"]
+[connection signal="focus_entered" from="PrimaryButtons/help" to="." method="_board_button_focus" binds= [ 3 ]]
+[connection signal="focus_exited" from="PrimaryButtons/help" to="." method="_board_button_unfocus" binds= [ 3 ]]
+[connection signal="mouse_entered" from="PrimaryButtons/help" to="PrimaryButtons/help" method="_hover"]
+[connection signal="mouse_exited" from="PrimaryButtons/help" to="PrimaryButtons/help" method="_unhover"]
+[connection signal="pressed" from="PrimaryButtons/help" to="." method="_help"]
+[connection signal="focus_entered" from="PrimaryButtons/quit" to="." method="_board_button_focus" binds= [ 4 ]]
+[connection signal="focus_exited" from="PrimaryButtons/quit" to="." method="_board_button_unfocus" binds= [ 4 ]]
+[connection signal="mouse_entered" from="PrimaryButtons/quit" to="PrimaryButtons/quit" method="_hover"]
+[connection signal="mouse_exited" from="PrimaryButtons/quit" to="PrimaryButtons/quit" method="_unhover"]
+[connection signal="pressed" from="PrimaryButtons/quit" to="." method="_quit"]
+
+[editable path="transition"]
