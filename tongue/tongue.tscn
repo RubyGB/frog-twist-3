@@ -35,7 +35,7 @@ texture = ExtResource( 2 )
 
 [node name="sfx_extend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -25.0
+volume_db = -10.0
 script = ExtResource( 4 )
 extendPitchSpeed = 0.02
 minExtendPitch = 0.3

@@ -20,6 +20,8 @@ var clickedOnce : bool = false
 var daytime : bool = false
 var daytimeLerpProgress : float = 0
 
+var final_daytime : bool = false
+
 var daytime_modulate_finished : bool = false
 func _dmf() -> void:
 	daytime_modulate_finished = true
@@ -33,8 +35,10 @@ func _dtr() -> void:
 	daytime_tongue_retracted = true
 	checkDaytimeFinished()
 func checkDaytimeFinished() -> void:
-	if daytime_modulate_finished and daytime_bugs_unregistered and daytime_tongue_retracted:
+	if !final_daytime and daytime_modulate_finished and daytime_bugs_unregistered and daytime_tongue_retracted:
 		Globals.recordNewScore(BugNet.score)
+		GlobalMusicPlayer.fadein(GlobalMusicPlayer.RESULTS)
+		final_daytime = true
 		emit_signal("final_daytime")
 
 onready var validBugBounds := Rect2(bugBorderExclusion, bugBorderExclusion, Globals.SWIDTH - 2*bugBorderExclusion, Globals.SHEIGHT - 2*bugBorderExclusion)
@@ -95,11 +99,13 @@ func _input(event : InputEvent) -> void:
 		return
 	if event.is_action_pressed("reset"):
 		$transition/animator.play("fade_out")
+		GlobalMusicPlayer.fadeout()
 
 func _restart_level(animName : String) -> void:
 	if animName != "fade_out":
 		return
 	BugNet.hardReset()
+	GlobalMusicPlayer.fadein(GlobalMusicPlayer.TITLE) # ambience
 	get_tree().change_scene_to(Globals.gameScene)
 
 func validBugSpawnPoint() -> Vector2:
@@ -113,3 +119,4 @@ func timerString(time : int) -> String:
 
 func _begin_day() -> void:
 	daytime = true
+	GlobalMusicPlayer.hardStop()
