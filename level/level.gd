@@ -48,7 +48,6 @@ func _ready():
 	get_node("%tongue").connect("final_tongue_retracted", self, "_dtr")
 	
 	spawnBugs()
-	$music.play(Globals.levelMusicProgress)
 	$transition/animator.play("fade_in")
 
 func spawnBugs() -> void:
@@ -69,6 +68,7 @@ func _process(delta : float) -> void:
 	
 	if !clickedOnce and Input.is_action_just_pressed("click"):
 		clickedOnce = true
+		GlobalMusicPlayer.playID(GlobalMusicPlayer.LEVEL_A)
 	if daytime:
 		day_p(delta)
 		return
@@ -99,7 +99,6 @@ func _input(event : InputEvent) -> void:
 func _restart_level(animName : String) -> void:
 	if animName != "fade_out":
 		return
-	Globals.levelMusicProgress = $music.get_playback_position()
 	BugNet.hardReset()
 	get_tree().change_scene_to(Globals.gameScene)
 

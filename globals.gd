@@ -10,7 +10,6 @@ const THEIGHT : int = 14
 
 enum PhysicsLayer {BUGS = 1, TONGUE_END = 2, OBSTACLE = 4}
 
-var levelMusicProgress : float = 0
 var zoomLevel : int = 3 # multiplier for game window size
 var topScore : int = 0
 func recordNewScore(score : int) -> void:

@@ -17,6 +17,7 @@ run/main_scene="res://ui/main menu/main menu.tscn"
 
 Globals="*res://globals.gd"
 BugNet="*res://bugs/bug_net.gd"
+GlobalMusicPlayer="*res://global_music_player.gd"
 
 [display]
 
