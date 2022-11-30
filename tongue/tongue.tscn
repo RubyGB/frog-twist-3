@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tongue/tongue.gd" type="Script" id=1]
 [ext_resource path="res://tongue/tongue_end.png" type="Texture" id=2]
-[ext_resource path="res://tongue/tongue_extend.wav" type="AudioStream" id=3]
+[ext_resource path="res://tongue/Tongue Extend.wav" type="AudioStream" id=3]
 [ext_resource path="res://tongue/sfx_extend.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -38,8 +38,8 @@ stream = ExtResource( 3 )
 volume_db = -10.0
 script = ExtResource( 4 )
 extendPitchSpeed = 0.02
-minExtendPitch = 0.3
-maxExtendPitch = 0.5
+minExtendPitch = 0.35
+maxExtendPitch = 0.55
 
 [connection signal="start_extend" from="." to="sfx_extend" method="_start_extend"]
 [connection signal="stop_extend" from="." to="sfx_extend" method="_stop_extend"]

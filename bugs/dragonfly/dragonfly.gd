@@ -18,6 +18,7 @@ var flyingDelta : Vector2
 var flyingProgress : float = 0
 
 var daytime : bool = false
+var inFinalFlight : bool = false
 
 func _ready():
 	color = randi() % 4
@@ -29,21 +30,24 @@ func getFrame() -> int:
 func _process(delta : float) -> void:
 	$sprite.frame = getFrame()
 	
-	if daytime and not flying:
-		day_p(delta)
-		return
-	
 	if flying:
 		flyingProgress = min(flyingProgress + flyingSpeed * delta, 1)
 		position = flyingStart + flyingDelta * dragonInterp(flyingProgress)
 		if flyingProgress == 1:
+			if inFinalFlight:
+				die()
 			nextWaitTime = randomWaitTime()
 			flying = false
 	else:
 		waited += delta
 		if waited > nextWaitTime:
 			waited -= nextWaitTime
-			var target : Vector2 = newTarget()
+			var target : Vector2
+			if daytime:
+				inFinalFlight = true
+				target = endTarget()
+			else:
+				target = newTarget()
 			flyingStart = position
 			flyingDelta = target - position
 			flyingSpeed = instantFlyingSpeed / 2
@@ -55,8 +59,11 @@ func _process(delta : float) -> void:
 
 func _on_dragonfly_body_entered(body:Node):
 	if body.collision_layer | Globals.PhysicsLayer.TONGUE_END:
-		BugNet.catchBug(BugNet.Type.DRAGONFLY)
-		queue_free() # TODO: make cute animation for collecting dragonfly
+		die()
+
+func die() -> void:
+	BugNet.catchBug(BugNet.Type.DRAGONFLY)
+	queue_free() # TODO: make cute animation for collecting dragonfly
 
 func randomWaitTime() -> float:
 	return (maxWaitTime - minWaitTime) * randf() + minWaitTime
@@ -70,11 +77,18 @@ func newTarget() -> Vector2:
 		return newTarget()
 	return tile_center + Globals.TSIZE * Vector2(randf() - 0.5, randf() - 0.5)
 
+func endTarget() -> Vector2:
+	# pick a target 2 tiles off screen horiz. at random height
+	var x : int
+	if randi() % 2:
+		x = -2 * Globals.TSIZE
+	else:
+		x = Globals.SWIDTH + 2 * Globals.TSIZE
+	
+	return Vector2(x, randi() % Globals.SHEIGHT)
+
 func dragonInterp(t : float) -> float:
 	return 0.5 * (1 - cos(PI * t))
-
-func day_p(delta : float) -> void:
-	pass
 
 func _begin_day() -> void:
 	daytime = true

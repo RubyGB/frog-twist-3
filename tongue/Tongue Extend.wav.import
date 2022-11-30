@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/tongue_extend.wav-b3feef2c545b29a52bc50d4cd2ec500e.sample"
+path="res://.import/Tongue Extend.wav-a2718a297c7b4bdf6bde562bff0d8c1a.sample"
 
 [deps]
 
-source_file="res://tongue/tongue_extend.wav"
-dest_files=[ "res://.import/tongue_extend.wav-b3feef2c545b29a52bc50d4cd2ec500e.sample" ]
+source_file="res://tongue/Tongue Extend.wav"
+dest_files=[ "res://.import/Tongue Extend.wav-a2718a297c7b4bdf6bde562bff0d8c1a.sample" ]
 
 [params]
 
@@ -17,7 +17,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0
