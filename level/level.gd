@@ -16,6 +16,7 @@ func _fadein(animName : String) -> void:
 
 var timer : float = 20
 var clickedOnce : bool = false
+var countdowns : int = 0
 
 var daytime : bool = false
 var daytimeLerpProgress : float = 0
@@ -76,9 +77,12 @@ func _process(delta : float) -> void:
 	if daytime:
 		day_p(delta)
 		return
-
+	if (timer <= 3 and countdowns == 0) or (timer <= 2 and countdowns == 1) or (timer <= 1 and countdowns == 2):
+		countdowns += 1
+		$countdown.play()
 	if timer <= 0:
 		# game is "over", initiate day sequence
+		$timeup.play()
 		get_tree().call_group("daytime", "_begin_day")
 	elif clickedOnce:
 		timer -= delta

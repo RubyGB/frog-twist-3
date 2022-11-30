@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tongue/tongue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/level.gd" type="Script" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://objects/objects.tres" type="TileSet" id=4]
 [ext_resource path="res://ui/GGG.tres" type="DynamicFont" id=5]
 [ext_resource path="res://level/tiles/ground.tres" type="TileSet" id=6]
+[ext_resource path="res://level/Time Countdown.wav" type="AudioStream" id=7]
 [ext_resource path="res://ui/ingame/gameover_label.gd" type="Script" id=8]
 [ext_resource path="res://ui/ingame/score_label.gd" type="Script" id=9]
 [ext_resource path="res://ui/transitions/transition_fov.tscn" type="PackedScene" id=10]
+[ext_resource path="res://level/Time Up.wav" type="AudioStream" id=11]
 
 [node name="root" type="Node2D" groups=["daytime"]]
 script = ExtResource( 2 )
@@ -86,6 +88,14 @@ script = ExtResource( 8 )
 [node name="transition" parent="." instance=ExtResource( 10 )]
 margin_right = 256.0
 margin_bottom = 224.0
+
+[node name="countdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+
+[node name="timeup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
 
 [connection signal="final_daytime" from="." to="UI/GameoverLabel" method="_final_daytime"]
 [connection signal="end_retract" from="frog_modulate/tongue" to="frog_modulate/frog" method="_set_closed"]
