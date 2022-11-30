@@ -82,6 +82,7 @@ func extend_p(delta : float) -> void:
 	var spd : float = delta * cSpeed * close_decay_factor(distToMouse)
 	var col = $end.move_and_collide(dir * spd)
 	if col and col.collider.collision_layer | Globals.PhysicsLayer.OBSTACLE:
+		$sfx_stuck.play()
 		start_retract()
 		return
 	
@@ -89,6 +90,7 @@ func extend_p(delta : float) -> void:
 	
 	# After movement, check if out of screen bounds.
 	if Globals.isOffScreen($end.global_position):
+		$sfx_stuck.play()
 		start_retract()
 		return
 	
@@ -96,6 +98,7 @@ func extend_p(delta : float) -> void:
 	var pts = $tail.points
 	for n in range(1, len(pts)-1 - selfCollideTolerance):
 		if Geometry.segment_intersects_segment_2d(pts[-2], pts[-1], pts[n-1], pts[n]):
+			$sfx_stuck.play()
 			start_retract()
 			return
 	
@@ -105,6 +108,7 @@ func extend_p(delta : float) -> void:
 func start_retract() -> void:
 	emit_signal("stop_extend")
 	mode = RETRACT
+	$sfx_retract.play()
 
 func retract_p(delta : float) -> void:
 	if daytime and len($tail.points) == 0:
@@ -131,6 +135,7 @@ func retract_p(delta : float) -> void:
 func finish_retract() -> void:
 	$end/collider.disabled = true
 	mode = AIM
+	$sfx_retract.stop()
 
 # returns a value in the range [1/2, 1) based on how close to 0 the input is
 func close_decay_factor(x : float) -> float:
