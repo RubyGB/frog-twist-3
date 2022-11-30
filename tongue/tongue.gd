@@ -136,6 +136,7 @@ func finish_retract() -> void:
 	$end/collider.disabled = true
 	mode = AIM
 	$sfx_retract.stop()
+	$sfx_close.play()
 
 # returns a value in the range [1/2, 1) based on how close to 0 the input is
 func close_decay_factor(x : float) -> float:
