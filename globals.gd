@@ -10,8 +10,14 @@ const THEIGHT : int = 14
 
 enum PhysicsLayer {BUGS = 1, TONGUE_END = 2, OBSTACLE = 4}
 
-var bgmVolume : float = 100
-var sfxVolume : float = 100
+var bgmVolume : float = 100 setget _bgmSet
+func _bgmSet(nv : float) -> void:
+	bgmVolume = nv
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), linear2db(bgmVolume/100.0))
+var sfxVolume : float = 100 setget _sfxSet
+func _sfxSet(nv : float) -> void:
+	sfxVolume = nv
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(sfxVolume/100.0))
 
 var zoomLevel : int = 3 # multiplier for game window size
 var topScore : int = 0

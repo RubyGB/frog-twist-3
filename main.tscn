@@ -103,10 +103,12 @@ margin_bottom = 224.0
 [node name="countdown" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -20.0
+bus = "SFX"
 
 [node name="timeup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -10.0
+bus = "SFX"
 
 [connection signal="final_daytime" from="." to="UI/GameoverLabel" method="_final_daytime"]
 [connection signal="end_retract" from="frog_modulate/tongue" to="night_modulate/frog" method="_set_closed"]

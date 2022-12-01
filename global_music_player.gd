@@ -24,6 +24,7 @@ var fading : int = FadeState.NONE
 var fadeSpeed : float
 
 func _ready() -> void:
+	bus = "BGM"
 	playID(TITLE)
 
 func _process(delta : float) -> void:
