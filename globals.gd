@@ -19,6 +19,9 @@ func _sfxSet(nv : float) -> void:
 	sfxVolume = nv
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), linear2db(sfxVolume/100.0))
 
+enum MUSIC_CHOICE { RANDOM, A, B, C }
+var musicChoice : int = MUSIC_CHOICE.RANDOM
+
 var zoomLevel : int = 3 # multiplier for game window size
 var topScore : int = 0
 func recordNewScore(score : int) -> void:

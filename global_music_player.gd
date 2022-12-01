@@ -10,11 +10,15 @@ const DEFAULT_FADE_DURATION : float = 1.0
 
 const titleStream = preload("res://ui/main menu/frogtwist_title.wav")
 const levelAStream = preload("res://level/frogtwist_bgm1.wav")
+const levelBStream = preload("res://level/frogtwist_bgm2.wav")
+const levelCStream = preload("res://level/frogtwist_bgm3.wav")
 const resultsStream = preload("res://level/frogtwist_results.wav")
-enum { NO_MUSIC = -1, TITLE, LEVEL_A, RESULTS }
+enum { NO_MUSIC = -1, TITLE, LEVEL_A, LEVEL_B, LEVEL_C, RESULTS }
 const ID_MAP = {
 	TITLE : titleStream,
 	LEVEL_A : levelAStream,
+	LEVEL_B : levelBStream,
+	LEVEL_C : levelCStream,
 	RESULTS : resultsStream
 }
 

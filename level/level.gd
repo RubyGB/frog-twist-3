@@ -73,7 +73,7 @@ func _process(delta : float) -> void:
 	
 	if !clickedOnce and Input.is_action_just_pressed("click"):
 		clickedOnce = true
-		GlobalMusicPlayer.playID(GlobalMusicPlayer.LEVEL_A)
+		playLevelMusic()
 	if daytime:
 		day_p(delta)
 		return
@@ -88,6 +88,12 @@ func _process(delta : float) -> void:
 		timer -= delta
 	var seconds := ceil(timer) as int
 	$UI/TimeLabel.text = timerString(seconds)
+
+func playLevelMusic() -> void:
+	if Globals.musicChoice == Globals.MUSIC_CHOICE.RANDOM:
+		GlobalMusicPlayer.playID(GlobalMusicPlayer.LEVEL_A + ( randi() % 3 ))
+		return
+	GlobalMusicPlayer.playID(GlobalMusicPlayer.LEVEL_A + Globals.musicChoice-1)
 
 func day_p(delta : float) -> void:
 	daytimeLerpProgress = min(1, daytimeLerpProgress + daytimeModulateSpeed * delta)
