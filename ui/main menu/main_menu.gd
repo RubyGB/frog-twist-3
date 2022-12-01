@@ -16,14 +16,13 @@ func _start_game(_x) -> void:
 	get_tree().change_scene_to(Globals.gameScene)
 
 func _options() -> void:
-	print("options")
-	#get_tree().change_scene("res://ui/main menu/options.tscn")
+	get_tree().change_scene("res://ui/main menu/options.tscn")
 
 func _credits() -> void:
 	get_tree().change_scene("res://ui/main menu/credits.tscn")
 
 func _help() -> void:
-	print("help")
+	get_tree().change_scene("res://ui/main menu/help.tscn")
 
 func _quit() -> void:
 	get_tree().quit()
