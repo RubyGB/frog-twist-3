@@ -97,7 +97,6 @@ text = "Game Over!"
 script = ExtResource( 8 )
 
 [node name="transition" parent="." instance=ExtResource( 10 )]
-visible = false
 margin_right = 256.0
 margin_bottom = 224.0
 

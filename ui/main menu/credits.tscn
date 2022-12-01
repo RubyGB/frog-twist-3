@@ -1,73 +1,299 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://ui/main menu/BaseSprites.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/main menu/background.png" type="Texture" id=2]
-[ext_resource path="res://ui/main menu/credits_title.png" type="Texture" id=3]
-[ext_resource path="res://ui/main menu/deanabad_credits.png" type="Texture" id=5]
+[ext_resource path="res://ui/KristenITC.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/main menu/software_icon_godot.png" type="Texture" id=2]
+[ext_resource path="res://ui/main menu/BaseSprites.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/main menu/main.theme" type="Theme" id=4]
+[ext_resource path="res://ui/main menu/credits_title.png" type="Texture" id=5]
 [ext_resource path="res://ui/main menu/clairebun_credits.png" type="Texture" id=6]
 [ext_resource path="res://ui/main menu/winter_credits.png" type="Texture" id=7]
-[ext_resource path="res://ui/KristenITC.tres" type="DynamicFont" id=9]
-[ext_resource path="res://ui/main menu/back_to_main_menu.gd" type="Script" id=10]
+[ext_resource path="res://ui/main menu/background.png" type="Texture" id=8]
+[ext_resource path="res://ui/main menu/deanabad_credits.png" type="Texture" id=9]
+[ext_resource path="res://ui/main menu/flat_icon_software.png" type="Texture" id=10]
+[ext_resource path="res://ui/KristenITC_small.tres" type="DynamicFont" id=11]
+[ext_resource path="res://ui/main menu/software_icon_aseprite.png" type="Texture" id=12]
+[ext_resource path="res://ui/main menu/asset_icon_font.png" type="Texture" id=13]
+[ext_resource path="res://ui/main menu/software_icon_DAWs_placeholder.png" type="Texture" id=14]
+[ext_resource path="res://ui/main menu/submenu_back_button.png" type="Texture" id=15]
+[ext_resource path="res://ui/main menu/back_to_main_menu.gd" type="Script" id=16]
 
-[node name="credits" type="Control"]
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 43, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 15 )
+region = Rect2( 86, 0, 43, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 15 )
+region = Rect2( 43, 0, 43, 24 )
+
+[node name="Sky" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 10 )
+mouse_filter = 2
+input_pass_on_modal_close_click = false
 
-[node name="reorderZ" type="Node2D" parent="."]
+[node name="BaseSprites" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
 z_index = -8
 
-[node name="BaseSprites" parent="reorderZ" instance=ExtResource( 1 )]
-modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
+[node name="Credits" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+input_pass_on_modal_close_click = false
+texture = ExtResource( 8 )
+patch_margin_left = 20
+patch_margin_top = 23
+patch_margin_right = 20
+patch_margin_bottom = 23
 
-[node name="Background" type="Sprite" parent="reorderZ"]
-position = Vector2( 128, 112 )
-z_index = 2
-texture = ExtResource( 2 )
+[node name="Header&Contents" type="VBoxContainer" parent="Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
 
-[node name="CreditsTitle" type="Sprite" parent="reorderZ"]
-position = Vector2( 128, 16 )
-z_index = 20
-texture = ExtResource( 3 )
+[node name="Header" type="MarginContainer" parent="Credits/Header&Contents"]
+margin_right = 256.0
+margin_bottom = 60.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+custom_constants/margin_top = 24
+custom_constants/margin_bottom = 4
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 236.0
-margin_bottom = 200.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
-margin_right = 217.0
-margin_bottom = 180.0
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
-margin_right = 205.0
-margin_bottom = 290.0
-
-[node name="clairebun" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-margin_right = 205.0
-margin_bottom = 94.0
-texture = ExtResource( 6 )
-
-[node name="deanabad" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 98.0
-margin_right = 205.0
-margin_bottom = 192.0
+[node name="Title" type="TextureRect" parent="Credits/Header&Contents/Header"]
+margin_top = 24.0
+margin_right = 256.0
+margin_bottom = 56.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
 texture = ExtResource( 5 )
+stretch_mode = 4
 
-[node name="winter" type="TextureRect" parent="MarginContainer/ScrollContainer/VBoxContainer"]
-margin_top = 196.0
-margin_right = 205.0
-margin_bottom = 290.0
+[node name="Contents" type="MarginContainer" parent="Credits/Header&Contents"]
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 224.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource( 2 )
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 30
+
+[node name="Scroll" type="ScrollContainer" parent="Credits/Header&Contents/Contents"]
+margin_left = 20.0
+margin_right = 236.0
+margin_bottom = 130.0
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+
+[node name="Items" type="VBoxContainer" parent="Credits/Header&Contents/Contents/Scroll"]
+margin_right = 208.0
+margin_bottom = 454.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TeamTitle" type="MarginContainer" parent="Credits/Header&Contents/Contents/Scroll/Items"]
+margin_right = 208.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+
+[node name="Text" type="RichTextLabel" parent="Credits/Header&Contents/Contents/Scroll/Items/TeamTitle"]
+margin_right = 208.0
+margin_bottom = 20.0
+size_flags_vertical = 3
+custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Game Development Team[/center]"
+meta_underlined = false
+text = "Game Development Team"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Winter" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items"]
+margin_top = 24.0
+margin_right = 208.0
+margin_bottom = 118.0
 texture = ExtResource( 7 )
 
-[node name="BackButton" type="Button" parent="."]
-margin_left = 202.0
-margin_top = 192.0
-margin_right = 253.0
-margin_bottom = 221.0
-custom_fonts/font = ExtResource( 9 )
-text = "Back"
+[node name="clairebun" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items"]
+margin_top = 122.0
+margin_right = 208.0
+margin_bottom = 216.0
+texture = ExtResource( 6 )
 
-[connection signal="pressed" from="BackButton" to="." method="_back"]
+[node name="DeanAbad" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items"]
+margin_top = 220.0
+margin_right = 208.0
+margin_bottom = 314.0
+texture = ExtResource( 9 )
+
+[node name="Software&Assets" type="MarginContainer" parent="Credits/Header&Contents/Contents/Scroll/Items"]
+margin_top = 318.0
+margin_right = 208.0
+margin_bottom = 338.0
+rect_min_size = Vector2( 0, 20 )
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+
+[node name="Text" type="RichTextLabel" parent="Credits/Header&Contents/Contents/Scroll/Items/Software&Assets"]
+margin_right = 208.0
+margin_bottom = 20.0
+size_flags_vertical = 3
+custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Software & Assets[/center]"
+meta_underlined = false
+text = "Software & Assets"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Software" type="HBoxContainer" parent="Credits/Header&Contents/Contents/Scroll/Items"]
+margin_top = 342.0
+margin_right = 208.0
+margin_bottom = 454.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+alignment = 1
+
+[node name="FlatIcon" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items/Software"]
+margin_right = 102.0
+margin_bottom = 112.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+texture = ExtResource( 10 )
+
+[node name="Names" type="MarginContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software"]
+margin_left = 106.0
+margin_right = 208.0
+margin_bottom = 112.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+size_flags_horizontal = 3
+custom_constants/margin_top = 12
+custom_constants/margin_left = -14
+
+[node name="Stuff" type="VBoxContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names"]
+margin_left = -14.0
+margin_top = 12.0
+margin_right = 102.0
+margin_bottom = 112.0
+
+[node name="s0" type="GridContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff"]
+margin_right = 116.0
+margin_bottom = 18.0
+columns = 2
+
+[node name="bullet0" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s0"]
+margin_right = 18.0
+margin_bottom = 18.0
+texture = ExtResource( 2 )
+
+[node name="item0" type="Label" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s0"]
+margin_left = 22.0
+margin_top = 1.0
+margin_right = 53.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 11 )
+text = "Godot"
+
+[node name="s1" type="GridContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff"]
+margin_top = 22.0
+margin_right = 116.0
+margin_bottom = 40.0
+columns = 2
+
+[node name="bullet1" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s1"]
+margin_right = 18.0
+margin_bottom = 18.0
+texture = ExtResource( 12 )
+
+[node name="item1" type="Label" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s1"]
+margin_left = 22.0
+margin_top = 1.0
+margin_right = 66.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 11 )
+text = "Aseprite"
+
+[node name="s2" type="GridContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff"]
+margin_top = 44.0
+margin_right = 116.0
+margin_bottom = 62.0
+columns = 2
+
+[node name="bullet2" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s2"]
+margin_right = 18.0
+margin_bottom = 18.0
+texture = ExtResource( 14 )
+
+[node name="item2" type="Label" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s2"]
+margin_left = 22.0
+margin_top = 1.0
+margin_right = 74.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 11 )
+text = "OpenMPT"
+
+[node name="s3" type="GridContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff"]
+margin_top = 66.0
+margin_right = 116.0
+margin_bottom = 81.0
+columns = 2
+
+[node name="bullet3" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s3"]
+margin_right = 18.0
+margin_bottom = 15.0
+texture = ExtResource( 13 )
+
+[node name="item3" type="Label" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s3"]
+margin_left = 22.0
+margin_right = 107.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 11 )
+text = "Kristen ITC Font"
+
+[node name="s4" type="GridContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff"]
+margin_top = 85.0
+margin_right = 116.0
+margin_bottom = 100.0
+columns = 2
+
+[node name="bullet4" type="TextureRect" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s4"]
+margin_right = 18.0
+margin_bottom = 15.0
+texture = ExtResource( 13 )
+
+[node name="item4" type="Label" parent="Credits/Header&Contents/Contents/Scroll/Items/Software/Names/Stuff/s4"]
+margin_left = 22.0
+margin_right = 71.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 11 )
+text = "GGG font"
+
+[node name="SubmenuBackButton" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -29.0
+margin_right = 48.0
+margin_bottom = -5.0
+input_pass_on_modal_close_click = false
+texture_normal = SubResource( 3 )
+texture_pressed = SubResource( 4 )
+texture_hover = SubResource( 5 )
+stretch_mode = 2
+script = ExtResource( 16 )
+
+[connection signal="pressed" from="SubmenuBackButton" to="SubmenuBackButton" method="_back"]
