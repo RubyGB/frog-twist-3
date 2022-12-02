@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/deanabad_credits.png-c9a7c88fc5da76cf3498df9b65052da4.stex"
+path="res://.import/bullet_2.png-8a2ede99296b4cc2ffb5f841984e5467.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main menu/deanabad_credits.png"
-dest_files=[ "res://.import/deanabad_credits.png-c9a7c88fc5da76cf3498df9b65052da4.stex" ]
+source_file="res://ui/main menu/bullet_2.png"
+dest_files=[ "res://.import/bullet_2.png-8a2ede99296b4cc2ffb5f841984e5467.stex" ]
 
 [params]
 

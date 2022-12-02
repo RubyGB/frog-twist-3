@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/winter_credits.png-68e966ec88b32606ec4687316661b3c9.stex"
+path="res://.import/flat_icon_clairebun.png-eaad350a65b2e32d491b00f6a1c5e44d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main menu/winter_credits.png"
-dest_files=[ "res://.import/winter_credits.png-68e966ec88b32606ec4687316661b3c9.stex" ]
+source_file="res://ui/main menu/flat_icon_clairebun.png"
+dest_files=[ "res://.import/flat_icon_clairebun.png-eaad350a65b2e32d491b00f6a1c5e44d.stex" ]
 
 [params]
 
