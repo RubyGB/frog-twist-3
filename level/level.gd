@@ -134,3 +134,19 @@ func timerString(time : int) -> String:
 func _begin_day() -> void:
 	daytime = true
 	GlobalMusicPlayer.hardStop()
+
+
+func _on_RestartButton_pressed() -> void:
+	if !fadeinComplete:
+		return
+	$transition/animator.play("fade_out")
+	GlobalMusicPlayer.fadeout()
+
+
+func _on_HelpButton_pressed() -> void:
+	pass # Show the Help's MainContainer and its back button
+
+
+func _on_HomeButton_pressed() -> void:
+	if get_tree().change_scene("res://ui/main menu/main menu.tscn") != OK:
+		return
