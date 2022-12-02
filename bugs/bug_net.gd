@@ -41,8 +41,8 @@ func unregisterBug(type : int) -> void:
 	
 	registered[type] -= 1
 	if registered[type] == 0:
-		registered.erase(type)
-		typesRegistered -= 1
+		if registered.erase(type):
+			typesRegistered -= 1
 	# emit signal when all bugs have been unregistered
 	if typesRegistered == 0:
 		emit_signal("all_bugs_unregistered")

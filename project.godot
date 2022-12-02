@@ -13,6 +13,10 @@ config_version=4
 config/name="Frog Twist 3"
 run/main_scene="res://ui/main menu/main menu.tscn"
 
+[audio]
+
+driver=""
+
 [autoload]
 
 Globals="*res://globals.gd"
@@ -26,7 +30,8 @@ window/size/height=224
 window/size/resizable=false
 window/size/test_width=768
 window/size/test_height=672
-window/stretch/mode="viewport"
+window/tablet_driver=""
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [gui]

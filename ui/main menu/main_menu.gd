@@ -12,17 +12,22 @@ func _ready() -> void:
 func _play() -> void:
 	$transition.visible = true
 	$transition/animator.play("fade_out")
+	
 func _start_game(_x) -> void:
-	get_tree().change_scene_to(Globals.gameScene)
+	if get_tree().change_scene_to(Globals.gameScene):
+		return
 
 func _options() -> void:
-	get_tree().change_scene("res://ui/main menu/Options.tscn")
+	if get_tree().change_scene("res://ui/main menu/options.tscn"):
+		return
 
 func _credits() -> void:
-	get_tree().change_scene("res://ui/main menu/Credits.tscn")
+	if get_tree().change_scene("res://ui/main menu/credits.tscn"):
+		return
 
 func _help() -> void:
-	get_tree().change_scene("res://ui/main menu/Help.tscn")
+	if get_tree().change_scene("res://ui/main menu/help.tscn"):
+		return
 
 func _quit() -> void:
 	get_tree().quit()

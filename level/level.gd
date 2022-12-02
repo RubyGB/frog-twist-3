@@ -48,9 +48,12 @@ onready var modulateColor2 : Color = $frog_modulate.modulate
 const fireflyPrefab = preload("res://bugs/firefly/firefly.tscn")
 const dragonflyPrefab = preload("res://bugs/dragonfly/dragonfly.tscn")
 func _ready():
-	connect("daytime_modulate_finished", self, "_dmf")
-	BugNet.connect("all_bugs_unregistered", self, "_dbu")
-	get_node("%tongue").connect("final_tongue_retracted", self, "_dtr")
+	if connect("daytime_modulate_finished", self, "_dmf") != OK:
+		return
+	if BugNet.connect("all_bugs_unregistered", self, "_dbu") != OK:
+		return
+	if get_node("%tongue").connect("final_tongue_retracted", self, "_dtr") != OK:
+		return
 	
 	spawnBugs()
 	$transition/animator.play("fade_in")
@@ -116,7 +119,8 @@ func _restart_level(animName : String) -> void:
 		return
 	BugNet.hardReset()
 	GlobalMusicPlayer.fadein(GlobalMusicPlayer.TITLE) # ambience
-	get_tree().change_scene_to(Globals.gameScene)
+	if get_tree().change_scene_to(Globals.gameScene):
+		return
 
 func validBugSpawnPoint() -> Vector2:
 	return Globals.randomUnobstructedPointInRect(validBugBounds, Globals.PhysicsLayer.OBSTACLE)

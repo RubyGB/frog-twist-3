@@ -38,7 +38,7 @@ func _on_firefly_body_entered(body : Node):
 		queue_free() # TODO: make a cute animation for collecting a firefly
 
 func centerToFirefly() -> Vector2:
-	return global_position - Vector2(Globals.SWIDTH/2, Globals.SHEIGHT/2)
+	return global_position - Vector2(Globals.SWIDTH/2.0, Globals.SHEIGHT/2.0)
 
 func day_p(delta : float) -> void:
 	var dir := centerToFirefly()
