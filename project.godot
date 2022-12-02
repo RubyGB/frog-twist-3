@@ -12,6 +12,8 @@ config_version=4
 
 config/name="Frog Twist 3"
 run/main_scene="res://ui/main menu/main menu.tscn"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [audio]
 

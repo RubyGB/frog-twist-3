@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clairebun_credits.png-5933a787c4c47acfa836a21300109254.stex"
+path="res://.import/flat_icon_deanabad.png-9d29a4287a6cdc8ddea25b9df18dba4a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main menu/clairebun_credits.png"
-dest_files=[ "res://.import/clairebun_credits.png-5933a787c4c47acfa836a21300109254.stex" ]
+source_file="res://ui/main menu/flat_icon_deanabad.png"
+dest_files=[ "res://.import/flat_icon_deanabad.png-9d29a4287a6cdc8ddea25b9df18dba4a.stex" ]
 
 [params]
 
