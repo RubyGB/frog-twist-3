@@ -22,6 +22,8 @@ func _fadein(animName : String) -> void:
 	if animName == "fade_in":
 		fadeinComplete = true
 
+enum {STATE_HELD, JUST_PRESSED, JUST_RELEASED}
+var clickStatus : int = STATE_HELD
 enum {AIM, EXTEND, RETRACT}
 var mode : int = AIM
 var cSpeed : float
@@ -32,6 +34,13 @@ var finalRetract : bool = false
 # Returns the vector that goes from tongue end position to mouse position
 func tongueToMouse() -> Vector2:
 	return get_viewport().get_mouse_position() - $end.global_position
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			clickStatus = JUST_PRESSED
+		else:
+			clickStatus = JUST_RELEASED
 
 func _process(delta) -> void:
 	if !fadeinComplete:
@@ -44,12 +53,14 @@ func _process(delta) -> void:
 			extend_p(delta)
 		RETRACT:
 			retract_p(delta)
+	
+	clickStatus = STATE_HELD # by this point, clicks will have been processed
 
 func aim_p(_delta : float) -> void:
 	if daytime and !finalRetract:
 		emit_signal("final_tongue_retracted")
 		finalRetract = true
-	if !daytime and Input.is_action_just_pressed("click"):
+	if !daytime and clickStatus == JUST_PRESSED:
 		cSpeed = topSpeed / 2 # start at half speed and accelerate from there
 		emit_signal("start_extend", tongueToMouse().normalized())
 		$end/collider.disabled = false
@@ -57,7 +68,7 @@ func aim_p(_delta : float) -> void:
 
 # where all the magic happens
 func extend_p(delta : float) -> void:
-	if Input.is_action_just_released("click"):
+	if clickStatus == JUST_RELEASED:
 		start_retract()
 		return
 	

@@ -21,8 +21,9 @@ func _sfxSet(nv : float) -> void:
 
 enum MUSIC_CHOICE { RANDOM, A, B, C }
 var musicChoice : int = MUSIC_CHOICE.RANDOM
-
 var zoomLevel : int = 3 # multiplier for game window size
+
+var returnedHomeFromGame := false
 var topScore : int = 0
 func recordNewScore(score : int) -> void:
 	if score > topScore:
@@ -31,6 +32,7 @@ func recordNewScore(score : int) -> void:
 onready var mouseCursorUp = load("res://ui/mouse_cursor.png")
 onready var mouseCursorDown = load("res://ui/mouse_cursor_down.png")
 onready var gameScene = load("res://main.tscn")
+onready var homeScene = load("res://ui/main menu/main menu.tscn")
 func _ready() -> void:
 	OS.set_window_size(Vector2(zoomLevel * SWIDTH, zoomLevel * SHEIGHT))
 	randomize()

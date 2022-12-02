@@ -18,6 +18,8 @@ var timer : float = 20
 var clickedOnce : bool = false
 var countdowns : int = 0
 
+var shouldReturnHome := false
+
 var daytime : bool = false
 var daytimeLerpProgress : float = 0
 
@@ -119,8 +121,13 @@ func _restart_level(animName : String) -> void:
 		return
 	BugNet.hardReset()
 	GlobalMusicPlayer.fadein(GlobalMusicPlayer.TITLE) # ambience
-	if get_tree().change_scene_to(Globals.gameScene):
-		return
+	if shouldReturnHome:
+		Globals.returnedHomeFromGame = true
+		if get_tree().change_scene_to(Globals.homeScene) != OK:
+			return
+	else:
+		if get_tree().change_scene_to(Globals.gameScene) != OK:
+			return
 
 func validBugSpawnPoint() -> Vector2:
 	return Globals.randomUnobstructedPointInRect(validBugBounds, Globals.PhysicsLayer.OBSTACLE)
@@ -148,5 +155,8 @@ func _on_HelpButton_pressed() -> void:
 
 
 func _on_HomeButton_pressed() -> void:
-	if get_tree().change_scene("res://ui/main menu/main menu.tscn") != OK:
+	if !fadeinComplete:
 		return
+	shouldReturnHome = true
+	$transition/animator.play("fade_out")
+	GlobalMusicPlayer.fadeout()

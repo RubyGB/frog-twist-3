@@ -8,12 +8,18 @@ func changeState(ns : int) -> void:
 
 func _ready() -> void:
 	grab_focus()
+	if Globals.returnedHomeFromGame:
+		$transition.visible = true
+		$transition/animator.play("fade_in")
+	Globals.returnedHomeFromGame = false
 
 func _play() -> void:
 	$transition.visible = true
 	$transition/animator.play("fade_out")
 	
-func _start_game(_x) -> void:
+func _start_game(anim_name : String) -> void:
+	if anim_name != "fade_out":
+		return
 	if get_tree().change_scene_to(Globals.gameScene):
 		return
 

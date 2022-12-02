@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ui/main menu/sfx_icon.png" type="Texture" id=1]
 [ext_resource path="res://ui/main menu/bgm_icon.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://ui/main menu/back_to_main_menu.gd" type="Script" id=10]
 [ext_resource path="res://ui/main menu/options.gd" type="Script" id=11]
 [ext_resource path="res://ui/main menu/music_selection.gd" type="Script" id=12]
+[ext_resource path="res://night_environment.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Theme" id=2]
 
@@ -33,6 +34,8 @@ anchor_bottom = 1.0
 mouse_filter = 2
 input_pass_on_modal_close_click = false
 script = ExtResource( 11 )
+
+[node name="environment" parent="." instance=ExtResource( 13 )]
 
 [node name="BaseSprites" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
