@@ -1,4 +1,4 @@
-extends Area2D
+extends PathFollow2D
 
 enum StinkbugColor {RED, BLUE, GREEN, ORANGE}
 export (StinkbugColor) var color
