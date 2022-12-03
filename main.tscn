@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://tongue/tongue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/level.gd" type="Script" id=2]
@@ -14,14 +14,7 @@
 [ext_resource path="res://ui/ingame/in-game_buttons_background.png" type="Texture" id=12]
 [ext_resource path="res://ui/ingame/in-game_buttons.png" type="Texture" id=13]
 [ext_resource path="res://night_environment.tscn" type="PackedScene" id=14]
-[ext_resource path="res://ui/KristenITC_small.tres" type="DynamicFont" id=15]
-[ext_resource path="res://ui/KristenITC.tres" type="DynamicFont" id=16]
-[ext_resource path="res://ui/main menu/main.theme" type="Theme" id=17]
-[ext_resource path="res://ui/main menu/help_title.png" type="Texture" id=18]
-[ext_resource path="res://ui/main menu/frog_icon.png" type="Texture" id=19]
-[ext_resource path="res://ui/main menu/controls_icon.png" type="Texture" id=20]
-[ext_resource path="res://ui/main menu/background.png" type="Texture" id=21]
-[ext_resource path="res://ui/main menu/gameplay_icon.png" type="Texture" id=22]
+[ext_resource path="res://ui/main menu/HelpContainer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ui/ingame/help.gd" type="Script" id=23]
 
 [sub_resource type="StreamTexture" id=9]
@@ -68,8 +61,6 @@ region = Rect2( 32, 0, 16, 16 )
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 13 )
 region = Rect2( 16, 0, 16, 16 )
-
-[sub_resource type="Theme" id=18]
 
 [node name="root" type="Node2D" groups=["daytime"]]
 script = ExtResource( 2 )
@@ -208,328 +199,10 @@ texture_normal = SubResource( 15 )
 texture_pressed = SubResource( 16 )
 texture_hover = SubResource( 17 )
 
-[node name="Help" type="NinePatchRect" parent="UI"]
+[node name="HelpContainer" parent="UI" instance=ExtResource( 15 )]
 visible = false
-light_mask = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_top = 27.0
-input_pass_on_modal_close_click = false
-texture = ExtResource( 21 )
-patch_margin_left = 20
-patch_margin_top = 23
-patch_margin_right = 20
-patch_margin_bottom = 23
 script = ExtResource( 23 )
-
-[node name="Header&Contents" type="VBoxContainer" parent="UI/Help"]
-light_mask = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="Header" type="MarginContainer" parent="UI/Help/Header&Contents"]
-light_mask = 0
-margin_right = 256.0
-margin_bottom = 60.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-custom_constants/margin_top = 24
-custom_constants/margin_bottom = 4
-
-[node name="Title" type="TextureRect" parent="UI/Help/Header&Contents/Header"]
-light_mask = 0
-margin_top = 24.0
-margin_right = 256.0
-margin_bottom = 56.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-texture = ExtResource( 18 )
-stretch_mode = 4
-
-[node name="Contents" type="MarginContainer" parent="UI/Help/Header&Contents"]
-light_mask = 0
-margin_top = 64.0
-margin_right = 256.0
-margin_bottom = 197.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource( 18 )
-custom_constants/margin_right = 20
-custom_constants/margin_left = 20
-custom_constants/margin_bottom = 30
-
-[node name="Scroll" type="ScrollContainer" parent="UI/Help/Header&Contents/Contents"]
-light_mask = 0
-margin_left = 20.0
-margin_right = 236.0
-margin_bottom = 103.0
-size_flags_vertical = 3
-theme = ExtResource( 17 )
-
-[node name="Items" type="VBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll"]
-light_mask = 0
-margin_right = 216.0
-margin_bottom = 646.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="AboutTitle" type="MarginContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items"]
-light_mask = 0
-margin_right = 208.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 0, 20 )
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="Text" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/AboutTitle"]
-light_mask = 0
-margin_right = 208.0
-margin_bottom = 20.0
-size_flags_vertical = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_fonts/normal_font = ExtResource( 16 )
-bbcode_enabled = true
-bbcode_text = "[center]About[/center]"
-meta_underlined = false
-text = "About"
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="AboutContents" type="HBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items"]
-light_mask = 0
-margin_top = 24.0
-margin_right = 208.0
-margin_bottom = 146.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-alignment = 1
-
-[node name="FlatIcon" type="TextureRect" parent="UI/Help/Header&Contents/Contents/Scroll/Items/AboutContents"]
-light_mask = 0
-margin_right = 52.0
-margin_bottom = 122.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-texture = ExtResource( 19 )
-
-[node name="Text" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/AboutContents/FlatIcon"]
-light_mask = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 14.0
-margin_top = 48.0
-margin_right = -6.0
-margin_bottom = -36.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 15 )
-bbcode_enabled = true
-bbcode_text = "[center]Yum![/center]"
-meta_underlined = false
-text = "Yum!"
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="Roles" type="MarginContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items/AboutContents"]
-light_mask = 0
-margin_left = 56.0
-margin_right = 208.0
-margin_bottom = 122.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-
-[node name="List" type="HBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items/AboutContents/Roles"]
-light_mask = 0
-margin_right = 152.0
-margin_bottom = 122.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Items" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/AboutContents/Roles/List"]
-light_mask = 0
-margin_right = 152.0
-margin_bottom = 122.0
-rect_clip_content = false
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 15 )
-bbcode_enabled = true
-bbcode_text = "[center]You play as Froggy the Frog, and you must aid him to eat as many bugs as possible in under 20 seconds!
-Move his tongue around to get the delicious treats![/center]"
-meta_underlined = false
-text = "You play as Froggy the Frog, and you must aid him to eat as many bugs as possible in under 20 seconds!
-Move his tongue around to get the delicious treats!"
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="ControlsTitle" type="MarginContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items"]
-light_mask = 0
-margin_top = 150.0
-margin_right = 208.0
-margin_bottom = 170.0
-rect_min_size = Vector2( 0, 20 )
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="Text" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/ControlsTitle"]
-light_mask = 0
-margin_right = 208.0
-margin_bottom = 20.0
-size_flags_vertical = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_fonts/normal_font = ExtResource( 16 )
-bbcode_enabled = true
-bbcode_text = "[center]Controls[/center]"
-meta_underlined = false
-text = "Controls"
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="ControlsContents" type="HBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items"]
-light_mask = 0
-margin_top = 174.0
-margin_right = 208.0
-margin_bottom = 356.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-alignment = 1
-
-[node name="FlatIcon" type="TextureRect" parent="UI/Help/Header&Contents/Contents/Scroll/Items/ControlsContents"]
-light_mask = 0
-margin_right = 74.0
-margin_bottom = 182.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-texture = ExtResource( 20 )
-
-[node name="Roles" type="MarginContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items/ControlsContents"]
-light_mask = 0
-margin_left = 78.0
-margin_right = 208.0
-margin_bottom = 182.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-
-[node name="List" type="HBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items/ControlsContents/Roles"]
-light_mask = 0
-margin_right = 130.0
-margin_bottom = 182.0
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Items" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/ControlsContents/Roles/List"]
-light_mask = 0
-margin_right = 130.0
-margin_bottom = 182.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 15 )
-bbcode_enabled = true
-bbcode_text = "[center]Hold the left mouse button (LMB) to stretch out the tongue, and release the LMB to retract it.
-
-Move the mouse while holding LMB to catch multiple bugs in one go.
-[/center]"
-meta_underlined = false
-text = "Hold the left mouse button (LMB) to stretch out the tongue, and release the LMB to retract it.
-
-Move the mouse while holding LMB to catch multiple bugs in one go.
-"
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="Gameplay" type="MarginContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items"]
-light_mask = 0
-margin_top = 360.0
-margin_right = 208.0
-margin_bottom = 380.0
-rect_min_size = Vector2( 0, 20 )
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="Text" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/Gameplay"]
-light_mask = 0
-margin_right = 208.0
-margin_bottom = 20.0
-size_flags_vertical = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_fonts/normal_font = ExtResource( 16 )
-bbcode_enabled = true
-bbcode_text = "[center]Gameplay[/center]"
-meta_underlined = false
-text = "Gameplay"
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-
-[node name="GameplayContents" type="HBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items"]
-light_mask = 0
-margin_top = 384.0
-margin_right = 208.0
-margin_bottom = 646.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-
-[node name="FlatIcon" type="TextureRect" parent="UI/Help/Header&Contents/Contents/Scroll/Items/GameplayContents"]
-light_mask = 0
-margin_right = 74.0
-margin_bottom = 262.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-texture = ExtResource( 22 )
-
-[node name="Roles" type="MarginContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items/GameplayContents"]
-light_mask = 0
-margin_left = 78.0
-margin_right = 208.0
-margin_bottom = 262.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-
-[node name="List" type="HBoxContainer" parent="UI/Help/Header&Contents/Contents/Scroll/Items/GameplayContents/Roles"]
-light_mask = 0
-margin_right = 130.0
-margin_bottom = 262.0
-size_flags_horizontal = 3
-
-[node name="Items" type="RichTextLabel" parent="UI/Help/Header&Contents/Contents/Scroll/Items/GameplayContents/Roles/List"]
-light_mask = 0
-margin_right = 130.0
-margin_bottom = 262.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-size_flags_horizontal = 3
-custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 15 )
-bbcode_enabled = true
-bbcode_text = "[center]Each bug differs in score, so better keep an eye on them! Also, stacking bugs increases the multiplier and score as a result!
-
-Hitting Froggy's own tongue or an object will retract it automatically, so be careful!
-
-Lastly, beware of the Stinkbugs. They are not tasty, they stink, and will cost you some points.[/center]"
-meta_underlined = false
-text = "Each bug differs in score, so better keep an eye on them! Also, stacking bugs increases the multiplier and score as a result!
-
-Hitting Froggy's own tongue or an object will retract it automatically, so be careful!
-
-Lastly, beware of the Stinkbugs. They are not tasty, they stink, and will cost you some points."
-scroll_active = false
-deselect_on_focus_loss_enabled = false
 
 [node name="transition" parent="." instance=ExtResource( 10 )]
 light_mask = 0
@@ -552,7 +225,7 @@ bus = "SFX"
 [connection signal="end_retract" from="frog_modulate/tongue" to="night_modulate/frog" method="_set_closed"]
 [connection signal="start_extend" from="frog_modulate/tongue" to="night_modulate/frog" method="_open_in_direction"]
 [connection signal="pressed" from="UI/MenuTexture/HBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
-[connection signal="toggled" from="UI/MenuTexture/HBoxContainer/HelpButton" to="UI/Help" method="_on_HelpButton_toggled"]
+[connection signal="toggled" from="UI/MenuTexture/HBoxContainer/HelpButton" to="UI/HelpContainer" method="_on_HelpButton_toggled"]
 [connection signal="pressed" from="UI/MenuTexture/HBoxContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
 [connection signal="animation_finished" from="transition/animator" to="." method="_fadein"]
 [connection signal="animation_finished" from="transition/animator" to="." method="_restart_level"]

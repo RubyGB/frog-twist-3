@@ -15,7 +15,7 @@ func _fadein(animName : String) -> void:
 		fadeinComplete = true
 
 var timer : float = 20
-var clickedOnce : bool = false
+var numClicks : int = 0
 var countdowns : int = 0
 
 var shouldReturnHome := false
@@ -76,9 +76,6 @@ func _process(delta : float) -> void:
 	if !fadeinComplete:
 		return
 	
-	if !clickedOnce and Input.is_action_just_pressed("click"):
-		clickedOnce = true
-		playLevelMusic()
 	if daytime:
 		day_p(delta)
 		return
@@ -89,7 +86,7 @@ func _process(delta : float) -> void:
 		# game is "over", initiate day sequence
 		$timeup.play()
 		get_tree().call_group("daytime", "_begin_day")
-	elif clickedOnce:
+	elif numClicks > 0:
 		timer -= delta
 	var seconds := ceil(timer) as int
 	$UI/TimeLabel.text = timerString(seconds)
@@ -109,9 +106,13 @@ func day_p(delta : float) -> void:
 		emit_signal("daytime_modulate_finished")
 		pass
 
-func _input(event : InputEvent) -> void:
+func _unhandled_input(event : InputEvent) -> void:
 	if !fadeinComplete:
 		return
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		numClicks += 1
+		if numClicks == 1:
+			playLevelMusic()
 	if event.is_action_pressed("reset"):
 		$transition/animator.play("fade_out")
 		GlobalMusicPlayer.fadeout()
