@@ -65,6 +65,7 @@ tracks/1/keys = {
 }
 
 [node name="firefly" type="Area2D" groups=["daytime"]]
+light_mask = 0
 collision_mask = 2
 script = ExtResource( 3 )
 timeToNewTarget = 0.5
@@ -72,6 +73,7 @@ moveSpeed = 8.0
 dayTimeWiggleRange = 6.28
 
 [node name="glow" type="Light2D" parent="." groups=["daytime"]]
+light_mask = 0
 position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
 texture_scale = 0.1
@@ -85,6 +87,8 @@ texture = ExtResource( 4 )
 hframes = 3
 
 [node name="collider" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 0
 shape = SubResource( 1 )
 
 [node name="animator" type="AnimationPlayer" parent="."]

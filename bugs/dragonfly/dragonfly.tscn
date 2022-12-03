@@ -24,6 +24,7 @@ tracks/0/keys = {
 }
 
 [node name="dragonfly" type="Area2D" groups=["daytime"]]
+light_mask = 0
 script = ExtResource( 2 )
 instantFlyingSpeed = 2.0
 minWaitTime = 1.0
@@ -35,6 +36,8 @@ hframes = 3
 vframes = 4
 
 [node name="collider" type="CollisionShape2D" parent="."]
+visible = false
+light_mask = 0
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
