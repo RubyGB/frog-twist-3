@@ -150,10 +150,6 @@ func _on_RestartButton_pressed() -> void:
 	GlobalMusicPlayer.fadeout()
 
 
-func _on_HelpButton_pressed() -> void:
-	pass # Show the Help's MainContainer and its back button
-
-
 func _on_HomeButton_pressed() -> void:
 	if !fadeinComplete:
 		return
