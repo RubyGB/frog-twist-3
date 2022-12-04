@@ -245,7 +245,6 @@ margin_top = 27.0
 script = ExtResource( 23 )
 
 [node name="transition" parent="." instance=ExtResource( 10 )]
-visible = false
 light_mask = 0
 margin_right = 256.0
 margin_bottom = 224.0
