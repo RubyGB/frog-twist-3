@@ -10,6 +10,7 @@ var state : int = STATE.GROW
 
 func _ready():
 	color = randi() % 4
+	scuttleSpeed /= get_parent().curve.get_baked_length()
 
 func getFrame() -> int:
 	return subFrame + 4 * color
@@ -28,10 +29,12 @@ func grow_p(delta : float) -> void:
 	state = STATE.MOVE
 
 func move_p(delta : float) -> void:
-	offset += scuttleSpeed * delta
+	unit_offset = min(1.0, unit_offset + scuttleSpeed * delta)
+	if unit_offset == 1.0:
+		state = STATE.SHRINK
 
 func shrink_p(delta : float) -> void:
-	die()
+	queue_free()
 
 func die() -> void:
 	BugNet.catchBug(BugNet.Type.STINKBUG)

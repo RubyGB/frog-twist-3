@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [node name="stinkbug" type="PathFollow2D"]
 script = ExtResource( 2 )
-scuttleSpeed = 10.0
+scuttleSpeed = 15.0
 
 [node name="sprite" type="Sprite" parent="."]
 position = Vector2( 1, 0 )
