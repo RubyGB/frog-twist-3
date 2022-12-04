@@ -35,7 +35,7 @@ func _process(delta : float) -> void:
 		position = flyingStart + flyingDelta * dragonInterp(flyingProgress)
 		if flyingProgress == 1:
 			if inFinalFlight:
-				die()
+				queue_free()
 			nextWaitTime = randomWaitTime()
 			flying = false
 	else:
