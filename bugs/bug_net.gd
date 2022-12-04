@@ -5,7 +5,7 @@ extends Node
 signal score_update
 signal all_bugs_unregistered
 
-enum Type {FIREFLY, DRAGONFLY}
+enum Type {FIREFLY, DRAGONFLY, STINKBUG}
 
 var registered : Dictionary
 var typesRegistered : int = 0
@@ -53,7 +53,9 @@ func catchBug(type : int) -> void:
 
 # This function will zero the dictionary of caught bugs
 func tallyScore() -> void:
-	score += numCaught() * (tryCaught(Type.FIREFLY) + 5*tryCaught(Type.DRAGONFLY))
+	score += numCaught() * (tryCaught(Type.FIREFLY) + 5*tryCaught(Type.DRAGONFLY) - 3*tryCaught(Type.STINKBUG))
+	if score < 0:
+		score = 0
 	for type in caught:
 		caught[type] = 0
 	emit_signal("score_update")

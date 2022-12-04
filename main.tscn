@@ -137,9 +137,8 @@ z_index = -1
 curve = SubResource( 18 )
 
 [node name="test_sb" parent="stinkbug_paths/path1" instance=ExtResource( 16 )]
-position = Vector2( 135.737, 167.494 )
-rotation = -1.81698
-offset = 31.54
+position = Vector2( 136, 199 )
+rotation = -1.5708
 
 [node name="path2" type="Path2D" parent="stinkbug_paths"]
 curve = SubResource( 19 )
@@ -151,7 +150,6 @@ curve = SubResource( 20 )
 curve = SubResource( 21 )
 
 [node name="UI" type="Control" parent="."]
-visible = false
 light_mask = 0
 margin_right = 256.0
 margin_bottom = 224.0
