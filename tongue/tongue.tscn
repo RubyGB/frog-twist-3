@@ -41,9 +41,9 @@ stream = ExtResource( 3 )
 volume_db = -10.0
 bus = "SFX"
 script = ExtResource( 4 )
-extendPitchSpeed = 0.02
+extendPitchSpeed = 0.125
 minExtendPitch = 0.35
-maxExtendPitch = 0.55
+maxExtendPitch = 1.75
 
 [node name="sfx_stuck" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
