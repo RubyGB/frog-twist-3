@@ -17,6 +17,7 @@ func _fadein(animName : String) -> void:
 var timer : float = 20
 var numClicks : int = 0
 var countdowns : int = 0
+var stinkbugs : int = 0
 
 var shouldReturnHome := false
 
@@ -49,6 +50,7 @@ onready var modulateColor1 : Color = $night_modulate.modulate
 onready var modulateColor2 : Color = $frog_modulate.modulate
 const fireflyPrefab = preload("res://bugs/firefly/firefly.tscn")
 const dragonflyPrefab = preload("res://bugs/dragonfly/dragonfly.tscn")
+const stinkbugPrefab = preload("res://bugs/stinkbug/stinkbug.tscn")
 func _ready():
 	if connect("daytime_modulate_finished", self, "_dmf") != OK:
 		return
@@ -82,6 +84,12 @@ func _process(delta : float) -> void:
 	if (timer <= 3 and countdowns == 0) or (timer <= 2 and countdowns == 1) or (timer <= 1 and countdowns == 2):
 		countdowns += 1
 		$countdown.play()
+	if (timer <= 10 and stinkbugs == 0) or (timer <= 9 and stinkbugs == 1) or (timer <= 8 and stinkbugs == 2):
+		stinkbugs += 1
+		var sb = stinkbugPrefab.instance()
+		var randomPath : Path2D = $stinkbug_paths.get_child(randi() % $stinkbug_paths.get_child_count())
+		randomPath.add_child(sb)
+		BugNet.registerBug(BugNet.Type.STINKBUG)
 	if timer <= 0:
 		# game is "over", initiate day sequence
 		$timeup.play()

@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.5
 
-[node name="tongue" type="Node2D" groups=["daytime"]]
+[node name="tongue" type="Node2D" groups=["daytime", "stinkbug_listener"]]
 script = ExtResource( 1 )
 topSpeed = 200.0
 acceleration = 40.0

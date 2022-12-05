@@ -35,6 +35,7 @@ func _process(delta : float) -> void:
 		position = flyingStart + flyingDelta * dragonInterp(flyingProgress)
 		if flyingProgress == 1:
 			if inFinalFlight:
+				BugNet.unregisterBug(BugNet.Type.DRAGONFLY)
 				queue_free()
 			nextWaitTime = randomWaitTime()
 			flying = false
@@ -59,9 +60,9 @@ func _process(delta : float) -> void:
 
 func _on_dragonfly_body_entered(body:Node):
 	if body.collision_layer | Globals.PhysicsLayer.TONGUE_END:
-		die()
+		get_caught()
 
-func die() -> void:
+func get_caught() -> void:
 	BugNet.catchBug(BugNet.Type.DRAGONFLY)
 	queue_free() # TODO: make cute animation for collecting dragonfly
 

@@ -159,3 +159,7 @@ func _begin_day() -> void:
 	daytime = true
 	if mode == EXTEND:
 		start_retract()
+
+func caught_stinkbug() -> void:
+	if mode == EXTEND:
+		start_retract()

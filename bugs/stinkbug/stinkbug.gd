@@ -25,17 +25,34 @@ func _process(delta : float) -> void:
 		STATE.SHRINK:
 			shrink_p(delta)
 
-func grow_p(delta : float) -> void:
-	state = STATE.MOVE
+func grow_p(_delta : float) -> void:
+	pass
 
 func move_p(delta : float) -> void:
 	unit_offset = min(1.0, unit_offset + scuttleSpeed * delta)
 	if unit_offset == 1.0:
 		state = STATE.SHRINK
+		$area/collider.disabled = true
+		$animator.play("shrink")
 
-func shrink_p(delta : float) -> void:
-	queue_free()
+func shrink_p(_delta : float) -> void:
+	pass
 
-func die() -> void:
+func get_caught() -> void:
 	BugNet.catchBug(BugNet.Type.STINKBUG)
 	queue_free()
+
+func _on_animation_finish(animName : String) -> void:
+	if animName == "grow":
+		state = STATE.MOVE
+		$animator.play("scuttle")
+		$area/collider.disabled = false
+	if animName == "shrink":
+		BugNet.unregisterBug(BugNet.Type.STINKBUG)
+		queue_free()
+
+
+func _on_area_body_entered(body : Node):
+	if body.collision_layer | Globals.PhysicsLayer.TONGUE_END:
+		get_caught()
+		get_tree().call_group("stinkbug_listener", "caught_stinkbug")

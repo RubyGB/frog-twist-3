@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://tongue/tongue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://level/level.gd" type="Script" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://ui/ingame/in-game_buttons.png" type="Texture" id=13]
 [ext_resource path="res://night_environment.tscn" type="PackedScene" id=14]
 [ext_resource path="res://ui/main menu/HelpContainer.tscn" type="PackedScene" id=15]
-[ext_resource path="res://bugs/stinkbug/stinkbug.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ui/ingame/help.gd" type="Script" id=23]
 
 [sub_resource type="Curve2D" id=18]
@@ -135,10 +134,6 @@ z_index = -1
 
 [node name="path1" type="Path2D" parent="stinkbug_paths"]
 curve = SubResource( 18 )
-
-[node name="test_sb" parent="stinkbug_paths/path1" instance=ExtResource( 16 )]
-position = Vector2( 136, 199 )
-rotation = -1.5708
 
 [node name="path2" type="Path2D" parent="stinkbug_paths"]
 curve = SubResource( 19 )

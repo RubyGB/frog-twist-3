@@ -53,7 +53,7 @@ func catchBug(type : int) -> void:
 
 # This function will zero the dictionary of caught bugs
 func tallyScore() -> void:
-	score += numCaught() * (tryCaught(Type.FIREFLY) + 5*tryCaught(Type.DRAGONFLY) - 3*tryCaught(Type.STINKBUG))
+	score += numCaught() * (tryCaught(Type.FIREFLY) + 5*tryCaught(Type.DRAGONFLY) - 10*tryCaught(Type.STINKBUG))
 	if score < 0:
 		score = 0
 	for type in caught:
@@ -61,7 +61,7 @@ func tallyScore() -> void:
 	emit_signal("score_update")
 
 func numCaught() -> int:
-	return tryCaught(Type.FIREFLY) + tryCaught(Type.DRAGONFLY)
+	return tryCaught(Type.FIREFLY) + tryCaught(Type.DRAGONFLY) + tryCaught(Type.STINKBUG)
 
 func tryCaught(type : int) -> int:
 	if !caught.has(type):
