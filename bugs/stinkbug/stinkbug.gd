@@ -55,4 +55,4 @@ func _on_animation_finish(animName : String) -> void:
 func _on_area_body_entered(body : Node):
 	if body.collision_layer | Globals.PhysicsLayer.TONGUE_END:
 		get_caught()
-		get_tree().call_group("stinkbug_listener", "caught_stinkbug")
+		get_tree().call_group("bug_listener", "caught_stinkbug")

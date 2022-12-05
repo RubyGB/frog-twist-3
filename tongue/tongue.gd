@@ -139,7 +139,17 @@ func retract_p(delta : float) -> void:
 	if len($tail.points) == 0:
 		$end.position = Vector2.ZERO
 		retract_progress = 1
+		
+		var oldScore = BugNet.score
 		BugNet.tallyScore()
+		var scoreDelta = BugNet.score - oldScore
+		if scoreDelta > 100:
+			$sfx_points_up_big.play()
+		elif scoreDelta > 0:
+			$sfx_points_up.play()
+		elif scoreDelta < 0:
+			$sfx_points_down.play()
+		
 		emit_signal("end_retract")
 		if not daytime:
 			finish_retract()
@@ -160,6 +170,15 @@ func _begin_day() -> void:
 	if mode == EXTEND:
 		start_retract()
 
+func caught_firefly() -> void:
+	if mode == EXTEND:
+		$sfx_firefly.play()
+
+func caught_dragonfly() -> void:
+	if mode == EXTEND:
+		$sfx_dragonfly.play()
+
 func caught_stinkbug() -> void:
 	if mode == EXTEND:
+		$sfx_stinkbug.play()
 		start_retract()

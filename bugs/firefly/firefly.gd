@@ -36,6 +36,7 @@ func _on_firefly_body_entered(body : Node):
 	if body.collision_layer | Globals.PhysicsLayer.TONGUE_END:
 		BugNet.catchBug(BugNet.Type.FIREFLY)
 		queue_free() # TODO: make a cute animation for collecting a firefly
+		get_tree().call_group("bug_listener", "caught_firefly")
 
 func centerToFirefly() -> Vector2:
 	return global_position - Vector2(Globals.SWIDTH/2.0, Globals.SHEIGHT/2.0)

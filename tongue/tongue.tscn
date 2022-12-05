@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://tongue/tongue.gd" type="Script" id=1]
 [ext_resource path="res://tongue/tongue_end.png" type="Texture" id=2]
@@ -7,11 +7,17 @@
 [ext_resource path="res://tongue/Tongue Stuck.wav" type="AudioStream" id=5]
 [ext_resource path="res://tongue/Tongue Retract.wav" type="AudioStream" id=6]
 [ext_resource path="res://tongue/Tongue Close.wav" type="AudioStream" id=7]
+[ext_resource path="res://tongue/Points +.wav" type="AudioStream" id=8]
+[ext_resource path="res://tongue/Points ++.wav" type="AudioStream" id=9]
+[ext_resource path="res://tongue/Points --.wav" type="AudioStream" id=10]
+[ext_resource path="res://tongue/Catch Dragonfly.wav" type="AudioStream" id=11]
+[ext_resource path="res://tongue/Catch Firefly.wav" type="AudioStream" id=12]
+[ext_resource path="res://tongue/Catch Stinkbug.wav" type="AudioStream" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.5
 
-[node name="tongue" type="Node2D" groups=["daytime", "stinkbug_listener"]]
+[node name="tongue" type="Node2D" groups=["bug_listener", "daytime"]]
 script = ExtResource( 1 )
 topSpeed = 200.0
 acceleration = 40.0
@@ -59,6 +65,30 @@ bus = "SFX"
 stream = ExtResource( 7 )
 volume_db = -15.0
 bus = "SFX"
+
+[node name="sfx_points_down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="sfx_points_up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -10.0
+
+[node name="sfx_points_up_big" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="sfx_firefly" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -20.0
+
+[node name="sfx_dragonfly" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -20.0
+
+[node name="sfx_stinkbug" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -15.0
 
 [connection signal="start_extend" from="." to="sfx_extend" method="_start_extend"]
 [connection signal="stop_extend" from="." to="sfx_extend" method="_stop_extend"]

@@ -61,6 +61,7 @@ func _process(delta : float) -> void:
 func _on_dragonfly_body_entered(body:Node):
 	if body.collision_layer | Globals.PhysicsLayer.TONGUE_END:
 		get_caught()
+		get_tree().call_group("bug_listener", "caught_dragonfly")
 
 func get_caught() -> void:
 	BugNet.catchBug(BugNet.Type.DRAGONFLY)

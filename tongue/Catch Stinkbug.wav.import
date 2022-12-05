@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Catch Stinkbug.wav-f6a3015e0e4c9f331263954c7d52228b.sample"
+
+[deps]
+
+source_file="res://tongue/Catch Stinkbug.wav"
+dest_files=[ "res://.import/Catch Stinkbug.wav-f6a3015e0e4c9f331263954c7d52228b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
