@@ -73,14 +73,13 @@ moveSpeed = 8.0
 dayTimeWiggleRange = 6.28
 
 [node name="glow" type="Light2D" parent="." groups=["daytime"]]
-light_mask = 0
 position = Vector2( 0, 1 )
 texture = ExtResource( 1 )
-texture_scale = 0.1
-energy = 0.0
+texture_scale = 0.25
+color = Color( 1, 0.984314, 0, 1 )
 script = ExtResource( 2 )
-glow_rate = 1.5
-min_glow_wait = 1.5
+glow_rate = 1.25
+min_glow_wait = 3.5
 
 [node name="bug" type="Sprite" parent="."]
 texture = ExtResource( 4 )

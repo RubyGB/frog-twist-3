@@ -242,10 +242,12 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Hold the left mouse button (LMB) to stretch out the tongue, and release the LMB to retract it.
 
+
 Move the mouse while holding LMB to catch multiple bugs in one go.
 [/center]"
 meta_underlined = false
 text = "Hold the left mouse button (LMB) to stretch out the tongue, and release the LMB to retract it.
+
 
 Move the mouse while holding LMB to catch multiple bugs in one go.
 "
@@ -319,13 +321,17 @@ custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Each bug differs in score, so better keep an eye on them! Also, stacking bugs increases the multiplier and score as a result!
 
+
 Hitting Froggy's own tongue or an object will retract it automatically, so be careful!
+
 
 Lastly, beware of the Stinkbugs. They are not tasty, they stink, and will cost you some points.[/center]"
 meta_underlined = false
 text = "Each bug differs in score, so better keep an eye on them! Also, stacking bugs increases the multiplier and score as a result!
 
+
 Hitting Froggy's own tongue or an object will retract it automatically, so be careful!
+
 
 Lastly, beware of the Stinkbugs. They are not tasty, they stink, and will cost you some points."
 scroll_active = false
