@@ -31,6 +31,8 @@ var retract_progress : float = 1 # accumulates exponentially fast
 var daytime : float = false
 var finalRetract : bool = false
 
+const scoreUpdatePrefab := preload("res://ui/ingame/score_update.tscn")
+
 # Returns the vector that goes from tongue end position to mouse position
 func tongueToMouse() -> Vector2:
 	return get_viewport().get_mouse_position() - $end.global_position
@@ -149,6 +151,11 @@ func retract_p(delta : float) -> void:
 			$sfx_points_up.play()
 		elif scoreDelta < 0:
 			$sfx_points_down.play()
+		if scoreDelta != 0:
+			# create a score update!
+			var scup = scoreUpdatePrefab.instance()
+			scup.scoreToDisplay = scoreDelta
+			get_node("%UI").add_child(scup)
 		
 		emit_signal("end_retract")
 		if not daytime:
