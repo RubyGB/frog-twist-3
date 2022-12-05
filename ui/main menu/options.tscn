@@ -1,31 +1,31 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://ui/main menu/sfx_icon.png" type="Texture" id=1]
-[ext_resource path="res://ui/main menu/bgm_icon.png" type="Texture" id=2]
-[ext_resource path="res://ui/main menu/background.png" type="Texture" id=3]
-[ext_resource path="res://ui/main menu/options_title.png" type="Texture" id=4]
-[ext_resource path="res://ui/KristenITC_small.tres" type="DynamicFont" id=5]
-[ext_resource path="res://ui/KristenITC.tres" type="DynamicFont" id=6]
-[ext_resource path="res://ui/main menu/BaseSprites.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/KristenITC_small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://ui/KristenITC.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/main menu/BaseSprites.tscn" type="PackedScene" id=3]
+[ext_resource path="res://night_environment.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/main menu/sfx_icon.png" type="Texture" id=5]
+[ext_resource path="res://ui/main menu/bgm_icon.png" type="Texture" id=6]
+[ext_resource path="res://ui/main menu/options_title.png" type="Texture" id=7]
 [ext_resource path="res://ui/main menu/main.theme" type="Theme" id=8]
-[ext_resource path="res://ui/main menu/submenu_back_button.png" type="Texture" id=9]
-[ext_resource path="res://ui/main menu/back_to_main_menu.gd" type="Script" id=10]
-[ext_resource path="res://ui/main menu/options.gd" type="Script" id=11]
-[ext_resource path="res://ui/main menu/music_selection.gd" type="Script" id=12]
-[ext_resource path="res://night_environment.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ui/main menu/back_to_main_menu.gd" type="Script" id=9]
+[ext_resource path="res://ui/main menu/options.gd" type="Script" id=10]
+[ext_resource path="res://ui/main menu/music_selection.gd" type="Script" id=11]
+[ext_resource path="res://ui/main menu/background.png" type="Texture" id=12]
+[ext_resource path="res://ui/main menu/submenu_back_button.png" type="Texture" id=13]
 
 [sub_resource type="Theme" id=2]
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 43, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 13 )
 region = Rect2( 86, 0, 43, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 9 )
+atlas = ExtResource( 13 )
 region = Rect2( 43, 0, 43, 24 )
 
 [node name="options" type="Control"]
@@ -33,11 +33,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 input_pass_on_modal_close_click = false
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 
-[node name="environment" parent="." instance=ExtResource( 13 )]
+[node name="environment" parent="." instance=ExtResource( 4 )]
 
-[node name="BaseSprites" parent="." instance=ExtResource( 7 )]
+[node name="BaseSprites" parent="." instance=ExtResource( 3 )]
 modulate = Color( 0.627451, 0.627451, 0.627451, 1 )
 z_index = -8
 
@@ -45,7 +45,7 @@ z_index = -8
 anchor_right = 1.0
 anchor_bottom = 1.0
 input_pass_on_modal_close_click = false
-texture = ExtResource( 3 )
+texture = ExtResource( 12 )
 patch_margin_left = 20
 patch_margin_top = 23
 patch_margin_right = 20
@@ -71,7 +71,7 @@ margin_right = 256.0
 margin_bottom = 56.0
 mouse_filter = 2
 input_pass_on_modal_close_click = false
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 stretch_mode = 4
 
 [node name="Contents" type="MarginContainer" parent="Credits/Header&Contents"]
@@ -112,7 +112,7 @@ margin_right = 208.0
 margin_bottom = 20.0
 size_flags_vertical = 3
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_fonts/normal_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Music Volume[/center]"
 meta_underlined = false
@@ -134,7 +134,7 @@ margin_right = 37.0
 margin_bottom = 28.0
 mouse_filter = 2
 input_pass_on_modal_close_click = false
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 
 [node name="MarginContainer" type="CenterContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/MusicVolumeContents"]
 margin_left = 41.0
@@ -154,7 +154,7 @@ mouse_filter = 2
 input_pass_on_modal_close_click = false
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
 custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]0[/center]"
 meta_underlined = false
@@ -180,7 +180,7 @@ mouse_filter = 2
 input_pass_on_modal_close_click = false
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
 custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]100[/center]"
 meta_underlined = false
@@ -201,7 +201,7 @@ margin_right = 208.0
 margin_bottom = 20.0
 size_flags_vertical = 3
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_fonts/normal_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Sound Effects Volume[/center]"
 meta_underlined = false
@@ -223,7 +223,7 @@ margin_right = 37.0
 margin_bottom = 28.0
 mouse_filter = 2
 input_pass_on_modal_close_click = false
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
 
 [node name="MarginContainer" type="CenterContainer" parent="Credits/Header&Contents/Contents/Scroll/Items/SoundEffectsVolumeContents"]
 margin_left = 41.0
@@ -243,7 +243,7 @@ mouse_filter = 2
 input_pass_on_modal_close_click = false
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
 custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]0[/center]"
 meta_underlined = false
@@ -268,7 +268,7 @@ mouse_filter = 2
 input_pass_on_modal_close_click = false
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
 custom_constants/shadow_offset_y = 1
-custom_fonts/normal_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 1 )
 bbcode_enabled = true
 bbcode_text = "[center]100[/center]"
 meta_underlined = false
@@ -289,7 +289,7 @@ margin_right = 208.0
 margin_bottom = 20.0
 size_flags_vertical = 3
 custom_colors/font_color_shadow = Color( 0.356863, 0.192157, 0.219608, 1 )
-custom_fonts/normal_font = ExtResource( 6 )
+custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Music Selection[/center]"
 meta_underlined = false
@@ -301,13 +301,13 @@ deselect_on_focus_loss_enabled = false
 margin_top = 136.0
 margin_right = 208.0
 margin_bottom = 160.0
-script = ExtResource( 12 )
+script = ExtResource( 11 )
 
 [node name="random" type="CheckBox" parent="Credits/Header&Contents/Contents/Scroll/Items/MusicChoiceContents"]
 margin_right = 67.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
 pressed = true
 text = "Random"
 
@@ -316,7 +316,7 @@ margin_left = 71.0
 margin_right = 114.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
 text = "A"
 
 [node name="random3" type="CheckBox" parent="Credits/Header&Contents/Contents/Scroll/Items/MusicChoiceContents"]
@@ -324,7 +324,7 @@ margin_left = 118.0
 margin_right = 161.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
 text = "B"
 
 [node name="random4" type="CheckBox" parent="Credits/Header&Contents/Contents/Scroll/Items/MusicChoiceContents"]
@@ -332,7 +332,7 @@ margin_left = 165.0
 margin_right = 208.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 1 )
 text = "C"
 
 [node name="SubmenuBackButton" type="TextureButton" parent="."]
@@ -347,7 +347,7 @@ texture_normal = SubResource( 3 )
 texture_pressed = SubResource( 4 )
 texture_hover = SubResource( 5 )
 stretch_mode = 2
-script = ExtResource( 10 )
+script = ExtResource( 9 )
 
 [connection signal="value_changed" from="Credits/Header&Contents/Contents/Scroll/Items/MusicVolumeContents/MarginContainer/HBoxContainer/bgm_slider" to="." method="_bgm_change"]
 [connection signal="value_changed" from="Credits/Header&Contents/Contents/Scroll/Items/SoundEffectsVolumeContents/MarginContainer/HBoxContainer/sfx_slider" to="." method="_sfx_change"]
