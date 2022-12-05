@@ -10,7 +10,10 @@ config_version=4
 
 [application]
 
-config/name="Frog Twist 3"
+config/name="Frog Twist"
+config/description="Frog Twist is a strategy arcade game where in under a 20-second time limit, the player must gather as much bugs as possible by stretching out the frog's tongue and sticking them on it before consumption.
+
+This game is inspired by Chameleon Twist platform games which are developed by Japan System Supply and published by Sunsoft. The inspiration can be seen with the controls of the game."
 run/main_scene="res://ui/main menu/main menu.tscn"
 config/icon="res://icon.png"
 config/windows_native_icon="res://icon.ico"
