@@ -145,6 +145,7 @@ curve = SubResource( 20 )
 curve = SubResource( 21 )
 
 [node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
 light_mask = 0
 margin_right = 256.0
 margin_bottom = 224.0
